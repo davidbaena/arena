@@ -1,0 +1,12 @@
+###############################
+#### Default configuration ####
+###############################
+
+defaults: &defaults
+  working_directory: ~/code
+  docker:
+    - image: circleci/android:api-29
+  environment:
+    JVM_OPTS: -Xmx3g
+    # Extracted from: https://github.com/circleci/circleci-docs/issues/2945
+    GRADLE_OPTS: -Xmx1536m -XX:+HeapDumpOnOutOfMemoryError -Dorg.gradle.caching=true -Dorg.gradle.configureondemand=true -Dkotlin.compiler.execution.strategy=in-process -Dkotlin.incremental=false
